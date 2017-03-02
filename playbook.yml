@@ -1,0 +1,8 @@
+---
+
+- name: Création d'un pool zfs raidz avec trois disques dur avec compression et deduplication
+  become: yes
+  hosts: all
+  roles:
+     - zfs-installation
+     - pool-creation

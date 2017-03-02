@@ -1,0 +1,11 @@
+lxc zfs
+
+echo "Creating zfs disk..."
+dd if=/dev/zero of=/root/zfsdisk1.img bs=1024 count=10485760 # 10gb
+zpool create lxc /root/zfsdisk1.img
+zpool set listsnapshots=on lxc
+
+echo "Setting up lxc..."
+rmdir /var/lib/lxc
+ln -s /lxc /var/lib/
+lxc-create -t ubuntu -n ubuntu -B zfs

@@ -1,0 +1,10 @@
+#install zfs on debian jessie
+as sudo
+echo "deb http://ftp.debian.org/debian jessie-backports main contrib" >> /etc/apt/sources.list.d/backports.list
+
+#install kernel headers
+apt install -y linux-headers-$(uname -r)
+
+#install zfs
+apt-get install -y -t jessie-backports zfs-dkms
+

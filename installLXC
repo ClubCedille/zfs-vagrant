@@ -1,0 +1,4 @@
+installLXC
+
+apt install lxd
+apt install lxc-client
