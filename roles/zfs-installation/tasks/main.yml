@@ -14,6 +14,6 @@
   tags: linux-headers
 
 - name: Installation | actual installation
-  shell: yes '\n' | apt install --force-yes -y -t jessie-backports zfs-dkms
+  shell: DEBIAN_FRONTEND=noninteractive apt install --force-yes -y -t jessie-backports zfs-dkms
 
    
