@@ -19,9 +19,9 @@
   tags: linux-headers
 
 - name: Installation | actual installation
-  expect:
-    command: apt-get install -y -t jessie-backports zfs-dkms
-    responses:
-     (?i)Configuring zfs-dfkms: '/n'
+  command: apt-get install -y -t jessie-backports zfs-dkms
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+
 
    
