@@ -1,19 +1,27 @@
 ---
 
+- name: Installation de pip
+  apt: name="python-pip"
+
+- name: Installation de pexpect
+  pip: name="pexpect"
+
 - name: Installation | adding jessie-backports repository
   template: src=templates/backports.list.j2 dest=/etc/apt/sources.list.d/backports.list
-  tags: reposirtory
+  tags: repository
 
 - name: Installation | updating cache with new repository
   apt: update_cache=yes
   tags: reposirtory
-
 
 - name: Installation | installation of linux headers
   action: shell apt install -y linux-headers-$(uname -r)
   tags: linux-headers
 
 - name: Installation | actual installation
-  shell: DEBIAN_FRONTEND=noninteractive apt install --force-yes -y -t jessie-backports zfs-dkms
+  expect:
+    command: apt-get install -y -t jessie-backports zfs-dkms
+    responses:
+     (?i)Configuring zfs-dfkms: '/n'
 
    

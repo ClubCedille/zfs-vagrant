@@ -7,7 +7,7 @@
 # you're doing.
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "debian/jessie64"
+  config.vm.box = "debian/jessie64" #Debian 8
 
   #bridge network
   config.vm.network "public_network"
