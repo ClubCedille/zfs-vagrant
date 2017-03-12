@@ -9,10 +9,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "debian/jessie64" #Debian 8
 
-  #bridge network
-  config.vm.network "public_network"
-
-
 #here's where the magic happen
 # Creation de trois hd de 10go dynamique en raidz pour tester et attachement de ceux-ci 
   config.vm.provider "virtualbox" do |vb|
