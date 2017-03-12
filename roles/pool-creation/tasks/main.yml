@@ -9,4 +9,5 @@
   tags: zfs
 
 - name: ZFS | Set Dedup
-  action: zfs set dedup={{deduplication}} {{pool_name}}
+  action: command zfs set dedup={{deduplication}} {{pool_name}}
+  tags: zfs
