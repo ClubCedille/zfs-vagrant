@@ -5,6 +5,15 @@
 le script ansible est supposé de créer un pool zfs raidz sur les trois disques dur générés par vagrant.
 le derait être compressé et dedupliqué
 
+## prérequis sur la machine hôte
+
+- vagrant 
+- ansible 2.2
+
+## pour démarer le setup 
+
+Dans le dossier du projet, exécuter `vagrant up`
+
 ## Vagrant
 
 Voici comment les disques dur sont généré (les disques dur sont stockés dans ./hd)
