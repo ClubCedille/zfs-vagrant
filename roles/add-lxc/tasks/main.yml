@@ -1,0 +1,14 @@
+---
+
+- name: LXD | Installation de snap
+  apt:
+    name: snapd
+    state: present
+    tags:  lxd
+
+#https://stgraber.org/2017/01/18/lxd-on-debian/
+- name: LXD | Install LXD from snap
+  command: snap install lxd
+  tags: lxd
+
+#- name: LXD | setup de lxd
