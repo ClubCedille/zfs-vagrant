@@ -1,10 +1,10 @@
 ---
 
-- name: Installation de pip
-  apt: name="python-pip"
+#- name: Installation de pip
+#  apt: name="python-pip"
 
-- name: Installation de pexpect
-  pip: name="pexpect"
+#- name: Installation de pexpect
+#  pip: name="pexpect"
 
 - name: Installation | adding jessie-backports repository
   template: src=templates/backports.list.j2 dest=/etc/apt/sources.list.d/backports.list

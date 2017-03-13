@@ -1,13 +1,18 @@
 ---
 
 - name: ZFS | Creation of the pool
-  action: command zpool create {{pool_name}} raidz /dev/sdb /dev/sdc /dev/sdd -f
+  command: zpool create {{pool_name}} raidz /dev/sdb /dev/sdc /dev/sdd -f
   tags: zfs
 
 - name: ZFS | Set compression
-  action: command zfs set compression={{compression_type}} {{pool_name}}
+  #action: command zfs set compression={{compression_type}} {{pool_name}}
+  zfs:
+    name: "{{pool_name}}/lxd"
+    compression: "{{compression}}"
+    state: present
+    dedup: "{{dedup}}"
   tags: zfs
 
-- name: ZFS | Set Dedup
-  action: command zfs set dedup={{deduplication}} {{pool_name}}
-  tags: zfs
+#- name: ZFS | Set Dedup
+#  command: zfs set dedup={{dedup}} {{pool_name}}
+#  tags: zfs

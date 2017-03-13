@@ -1,6 +1,6 @@
 ---
 
-compression_type: lz4
-deduplication: on
+compression: 'on'
+dedup: 'on'
 
 pool_name: zfs-pool
