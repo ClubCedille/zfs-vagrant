@@ -18,6 +18,12 @@ Prévu de fonctionner sur Debian jessie amd64
 
 Dans le dossier du projet, exécuter `vagrant up`
 
+## Réseau
+Réseau NAT
+
+## Variables
+Les variables se trouvent dans ```./group_vars/all``` et dans ```./roles/pool-creation/vars/main.yml```
+
 ## Vagrant
 
 Voici comment les disques dur sont générés (les disques dur sont stockés dans ./hd)
@@ -61,10 +67,6 @@ Voici comment les disques dur sont générés (les disques dur sont stockés dan
     end  
   end
 ```
-
-## Réseau
-Réseau NAT
-
 ## Configuration après installation
 ### ZFS
 
@@ -87,6 +89,9 @@ root@jessie:~# zfs get dedup
 NAME          PROPERTY  VALUE          SOURCE
 zfs-pool      dedup     on             local
 zfs-pool/lxd  dedup     on             local
+
+Possibilité d'avoir plusieur dataset dans le pool zfs, non affichés ici.
+
 ```
 ### LXC Après installation
 ```
@@ -103,5 +108,5 @@ zfs-pool      compressratio  1.75x  -
 zfs-pool/lxc  compressratio  1.75x  -
 
 ```
-Ici, on peut voir que les fichiers des conteneurs sont compressés et qu'il sont dédupliqués.
-
+Ici, on peut voir que les fichiers des conteneurs sont compressés et qu'ils sont dédupliqués.
+Possibilité d'avoir plusieur dataset dans le pool zfs, non affichés ici.

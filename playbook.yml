@@ -4,7 +4,7 @@
   become: yes
   hosts: all
   roles:
-     - zfs-installation
-     - pool-creation
+#     - zfs-installation
+#     - pool-creation
      - add-lxc
 

@@ -14,12 +14,12 @@
 
 - name: LXC | Cration d'un lien symbolique vers le pool zfs
   file:
-    src: "/{{pool_name}}/lxc"
+    src: "/{{pool_name}}/{{lxc_pool}}"
     dest: "/var/lib/lxc"
     state: link
   tags: lxc
 
-- name: LXC | Creation d'un conteneur LXC avec debian
+- name: LXC | Creation de conteneurs LXC avec debian
   command: lxc-create -t debian --name {{item}} --lxcpath=/var/lib/lxc --bdev dir
   with_items:
      - debian1

@@ -1,18 +1,14 @@
 ---
 
-- name: ZFS | Creation of the pool
+- name: ZFS | Création du pool zfs
   command: zpool create {{pool_name}} raidz /dev/sdb /dev/sdc /dev/sdd -f
   tags: zfs
 
-- name: ZFS | Set compression
-  #action: command zfs set compression={{compression_type}} {{pool_name}}
+- name: ZFS | Création de dataset par rapport à la variable pools
   zfs:
-    name: "{{pool_name}}/lxc"
-    compression: "{{compression}}"
+    name: "{{pool_name}}/{{item}}" #par exemple: /zfs-pool/lxc
+    compression: "{{compression}}" #par défaut à 'on'
     state: present
-    dedup: "{{dedup}}"
+    dedup: "{{dedup}}" #par défaut à 'on'
+  with_items: "{{pools}}"
   tags: zfs
-
-#- name: ZFS | Set Dedup
-#  command: zfs set dedup={{dedup}} {{pool_name}}
-#  tags: zfs
