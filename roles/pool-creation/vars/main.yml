@@ -3,4 +3,4 @@
 compression: 'on'
 dedup: 'on'
 
-pool_name: zfs-pool
+

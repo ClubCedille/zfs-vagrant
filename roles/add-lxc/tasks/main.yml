@@ -1,14 +1,26 @@
 ---
 
-- name: LXD | Installation de snap
+- name: LXC | Installation de LXC
   apt:
-    name: snapd
+    name: lxc
     state: present
-    tags:  lxd
+  tags: lxc
 
-#https://stgraber.org/2017/01/18/lxd-on-debian/
-- name: LXD | Install LXD from snap
-  command: snap install lxd
-  tags: lxd
+- name: LXC | Suppression du dossier par défaut pour lxc
+  file:
+    path: "/var/lib/lxc"
+    state: absent
+  tags: lxc
 
-#- name: LXD | setup de lxd
+- name: LXC | Cration d'un lien symbolique vers le pool zfs
+  file:
+    src: "/{{pool_name}}/lxc"
+    dest: "/var/lib/lxc"
+    state: link
+  tags: lxc
+
+- name: LXC | Creation d'un conteneur LXC avec debian
+  command: lxc-create -t debian --name {{item}} --lxcpath=/var/lib/lxc --bdev dir
+  with_items:
+     - debian1
+     - debian2

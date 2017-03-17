@@ -7,7 +7,7 @@
 - name: ZFS | Set compression
   #action: command zfs set compression={{compression_type}} {{pool_name}}
   zfs:
-    name: "{{pool_name}}/lxd"
+    name: "{{pool_name}}/lxc"
     compression: "{{compression}}"
     state: present
     dedup: "{{dedup}}"
