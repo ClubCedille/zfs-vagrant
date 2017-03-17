@@ -1,13 +1,15 @@
 # ZFS installation sur debian jessie avec Ansible
 
-## configuration
+## Configuration
 
 le script ansible est supposé de créer un pool zfs raidz sur les trois disques dur générés par vagrant.
 Les pool devraient être compressé et dedupliqué
 Ensuite, le script doit changer le dossier pour stocker les containeurs lxc vers le pool zfs.
-Pour tester le script va créer 2 conteneurs de Débian pour voir si la compression et la déduplication fonctionnent
+Pour tester, le script va créer 2 conteneurs de Débian pour voir si la compression et la déduplication fonctionnent
 
-## prérequis sur la machine hôte
+Prévu de fonctionner sur Debian jessie amd64
+
+## Prérequis sur la machine hôte
 
 - vagrant 
 - ansible 2.2
@@ -101,5 +103,5 @@ zfs-pool      compressratio  1.75x  -
 zfs-pool/lxc  compressratio  1.75x  -
 
 ```
-Ici on peut voir que les fichiers des conteneurs sont compressé et qu'il sont dédupliqué.
+Ici, on peut voir que les fichiers des conteneurs sont compressés et qu'il sont dédupliqués.
 
