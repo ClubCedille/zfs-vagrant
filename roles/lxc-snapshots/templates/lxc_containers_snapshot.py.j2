@@ -10,6 +10,11 @@ for c in lxc.list_containers(as_object=True):
 
 	#check the number of snapshot, if more then 5, delete the oldest one
 	snapsPath = "/var/lib/lxc/"+c.name+"/snaps/"
+
+	#Check id direcotry exist
+	if not os.path.exists(snapsPath):
+    	os.makedirs(snapsPath)
+
 	tmpList = os.listdir(snapsPath) #list of all the snapshots
 	if len(tmpList) > 5:
 		tmpList.sort(key=lambda x: os.path.getmtime(snapsPath+x)) #ordering list by creation date

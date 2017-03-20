@@ -1,3 +1,9 @@
 ---
 pool_name: zfs-pool #nom du pool zfs générique
-lxc_pool: lxc #le dataset à utiliser pour lxc
+#lxc_pool: lxc #le dataset à utiliser pour lxc
+
+pools: #zfs pools... 1 dataset per container
+  - { name: 'debian1', compression: 'on', dedup: 'on'} #dataset pour debian1
+  - { name: 'debian2', compression: 'on', dedup: 'on'} #dataset pour debian2
+  - { name: 'mirror', compression: 'off', dedup: 'off'}
+
