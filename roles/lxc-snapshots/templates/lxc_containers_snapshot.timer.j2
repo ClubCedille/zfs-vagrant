@@ -1,0 +1,10 @@
+[Unit]
+Description=Run le script de lxc containers snapshot a chaque minutes
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec={{timer}}
+Unit=lxc_containers_snapshot.service
+
+[Install]
+WantedBy=multi-user.target

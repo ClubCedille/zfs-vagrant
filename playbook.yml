@@ -7,4 +7,5 @@
      - zfs-installation
      - pool-creation
      - add-lxc
+     - lxc-snapshots
 

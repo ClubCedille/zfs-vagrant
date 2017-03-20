@@ -1,0 +1,23 @@
+---
+- name: Snapshots | python3 installation
+  apt:
+    name: python3
+    state: present
+  tags: Snapshots
+
+- name: Snapshots | sending templates
+  template:
+    src: '/templates/{{item.name}}'
+    dest: '{{item.dest}}'
+    mode: 0774
+  with_items:
+    - { name: 'lxc_containers_snapshot.py.j2', dest: '/root/lxc_containers_snapshot.py'}
+    - { name: 'lxc_containers_snapshot.timer.j2', dest: '/etc/systemd/system/lxc_containers_snapshot.timer'}
+    - { name: 'lxc_containers_snapshot.service.j2', dest: '/etc/systemd/system/lxc_containers_snapshot.service'}
+
+- name: Snapshots | starting timer
+  systemd:
+    state: started
+    daemon_reload: yes
+    name: lxc_containers_snapshot.timer
+    enabled: yes

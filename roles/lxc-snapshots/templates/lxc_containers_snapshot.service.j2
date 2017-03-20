@@ -1,0 +1,10 @@
+[Unit]
+Description=Creation de snapshot de tous les containers separement puis suppression des vieux snapshots
+
+
+[Service]
+Type=simple
+ExecStart=/root/lxc_containers_snapshot.py
+
+[Install]
+WantedBy=lxc_containers_snapshot.timer

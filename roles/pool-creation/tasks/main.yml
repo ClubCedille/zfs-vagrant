@@ -6,9 +6,9 @@
 
 - name: ZFS | Création de dataset par rapport à la variable pools
   zfs:
-    name: "{{pool_name}}/{{item}}" #par exemple: /zfs-pool/lxc
-    compression: "{{compression}}" #par défaut à 'on'
+    name: "{{pool_name}}/{{item.name}}" #par exemple: /zfs-pool/lxc
+    compression: "{{item.compression}}" #par défaut à 'on'
     state: present
-    dedup: "{{dedup}}" #par défaut à 'on'
+    dedup: "{{item.dedup}}" #par défaut à 'on'
   with_items: "{{pools}}"
   tags: zfs
