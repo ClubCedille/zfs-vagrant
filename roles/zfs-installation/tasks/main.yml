@@ -8,7 +8,7 @@
   tags: reposirtory
 
 - name: Installation | installation of linux headers
-  command: apt install -y linux-headers-$(uname -r)
+  action: shell apt install -y linux-headers-$(uname -r)
   tags: linux-headers
 
 - name: Installation | Installation de ZFS

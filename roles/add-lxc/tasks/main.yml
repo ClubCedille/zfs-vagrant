@@ -20,4 +20,5 @@
 #  tags: lxc
 
 - name: LXC | Creation de conteneurs LXC avec debian
-  command: lxc-create -t debian --name {{pools.name}} --lxcpath=/{{pool_name}}/{{pools.name}} --bdev dir
+  command: lxc-create -t debian --name {{item.name}} --lxcpath=/{{pool_name}}/{{item.name}} --bdev dir
+  with_items: "{{pools}}"

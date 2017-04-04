@@ -4,7 +4,7 @@ Description=Creation de snapshot de tous les containers separement puis suppress
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/zfs snapshot -r {{pool_name}@$(date)
+ExecStart=/root/snapshot-zfs.sh
 
 [Install]
 WantedBy=lxc_containers_snapshot.timer
