@@ -6,18 +6,18 @@
     state: present
   tags: lxc
 
-- name: LXC | Suppression du dossier par défaut pour lxc
-  file:
-    path: "/var/lib/lxc"
-    state: absent
-  tags: lxc
+#- name: LXC | Suppression du dossier par défaut pour lxc
+#  file:
+#    path: "/var/lib/lxc"
+#    state: absent
+#  tags: lxc
 
-- name: LXC | Cration d'un lien symbolique vers le pool zfs
-  file:
-    src: "/{{pool_name}}"
-    dest: "/var/lib/lxc"
-    state: link
-  tags: lxc
+#- name: LXC | Cration d'un lien symbolique vers le pool zfs
+#  file:
+#    src: "/{{pool_name}}"
+#    dest: "/var/lib/lxc"
+#    state: link
+#  tags: lxc
 
 - name: LXC | Creation de conteneurs LXC avec debian
   command: lxc-create -t debian --name {{item.name}} --lxcpath=/{{pool_name}}/{{item.name}} --bdev dir
